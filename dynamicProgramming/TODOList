@@ -1,0 +1,7 @@
+
+
+Subset sum problem : bool subsetSum(int arr[], int n, int target)
+Return true if there is a subset inside the arr[] of length n that matches the target.
+
+- One of the best explanations in the answer by Oliver.KOO at: https://stackoverflow.com/questions/4355955/subset-sum-algorithm
+
