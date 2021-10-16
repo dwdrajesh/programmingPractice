@@ -5,3 +5,30 @@ Return true if there is a subset inside the arr[] of length n that matches the t
 
 - One of the best explanations in the answer by Oliver.KOO at: https://stackoverflow.com/questions/4355955/subset-sum-algorithm
 
+
+The key to this algorithm or really any DP problem is to break down the problem and start simply from a base case. then we can build on the base case using some knowledge that we know:
+
+    we know that if the set X is empty then there is no way we can sum to any value of k.
+    If a set X contains k then it has a subset sum to k.
+    we know that if a subset of set x1 who is a subset of X sum to k1 then X will have a subset that sum to k1 namely x1.
+    we have a set X = {x1, x1, x3, ......., xn, xn+1}. We know it has a subset sum to k1 if x1 = {x1, x1, x3, ......., xn} has a subset sum to k - k1.
+
+Example to illustrate 1,2,3,4:
+
+    it is easy. if you have an empty set {}. you can't have a subset thus you can't have any subset sum.
+
+    A set X = {4} has a subset sum to 4 because 4 it self is part of the set
+
+    say you have a set x1 = {1,3,5} who is a subset of set X = {1,3,5,2,8}. if x1 has a subset sum to k1 = 8 then that means X also has a subset sum to 8 because x1 is a subset of X
+    say you have a set X = {1,3,5,2,19} and we want to know does it have a subset sum to 20. It does and one way to can know if that is x1 = {1,3,5,2} can sum to (20 - 19) = 1. Since x1 has a subset sum to 1 then when we add 19 to the set x1 we can take that new number 1 + 19 = 20 to create our desired sum 20.
+
+Dynamically build a matrix Cool! now let us utilize the above four logics and start building from the base case. We are going to build a matrix m. We define:
+
+    matrix m has i+1 rows and k + 1 columns.
+
+    Each cell of the matrix has value true or false.
+
+    m[i][s] returns true or false to indicate the answer to this question: "using the first i items in the array can we find a subset sum to s? " m[i][s]returns true for yes and false for no
+
+(note the Wikipedia answer or most of the people build a function m(i,s) but I thought the matrix is an easy way to understand dynamic programming. It works well when we only have positive numbers in the set or array. However the function route is better because you don't have to deal with index out of range, match index of the array and sum to the matrix.....)
+
