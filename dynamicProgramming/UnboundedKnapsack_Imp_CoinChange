@@ -1,3 +1,9 @@
+The logic behind this problem is logic behind 2 problems : 
+(number of ways to find sum from subset = k………in which we just replace || by +) and (unbounded knapsack)
+
 Go through this video to get the review (sp. after 15:00):
 
 https://www.youtube.com/watch?v=I4UR2T6Ro3w&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=15
+
+For code:
+https://www.educative.io/edpresso/coin-change-problem-2-finding-the-number-of-ways-to-make-a-sum
