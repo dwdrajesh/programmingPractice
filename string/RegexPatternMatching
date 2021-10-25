@@ -1,0 +1,46 @@
+Asked in Facebook interview:
+Q. Given a regex containing only chars, '+' and '*', operators, return 1 if string matches given regex and 0 otherwise.
+Note: '+': Means 1 or more of preceding char to this operator in the regex, while '*' means 0 or more of the preceding char.
+e.g.: 
+
+a. pattern: a*b, str = aaab, b, aab, ab : O/P: 1
+b. pattern: a+aabc, str = ab aabc, aabab, aaaabc ...: O/P: 0
+c. pattern: a+a*b*, str = a ab, aaabb: O/P: 1
+
+
+Algorithm: Time complexity would be O(max(n, m)) where n=str.length(), m=pattern.length().
+
+  Iterate over both the string and pattern starting at 0.
+  If at the pattern's position, there is a '+', replace it by '*' and move forward just 1 position in the pattern.
+  If at the pattern's position, there is a '*', just move forward by 2 places in the index of pattern (since * means 0 or more of preceding char in pattern)
+  Continue until the end of both strings, i.e.: '\0' is encountered in either of them.
+  
+  
+  TODO: Try to come up with C++ string in both str and pattern instead of char*.
+  
+  int regex(char* str, char* pattern)
+  {
+    int str_marker=0;
+    int pattern_marker=0;
+
+    while(str[str_marker] && pattern[pattern_marker])
+    {
+      if(str[str_marker] == pattern[pattern_marker])
+      {
+        str_marker++;
+        if(pattern[pattern_marker+1] == ‘+’)
+          pattern[pattern_marker+1]=’*’;
+        if(pattern[pattern_marker+1] != ’*’)
+          pattern_marker++;
+      }
+      else if(pattern[pattern_marker+1]==’*’)
+      {
+        pattern_marker+=2;
+      }
+      else return 0;
+    }
+
+    return str[str_marker] == pattern[pattern_marker];
+  }
+
+
