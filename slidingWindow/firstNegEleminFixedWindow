@@ -1,0 +1,10 @@
+Q. Print the first -ve value found in each window of size 'k'. Print 0 if no negative in any of the sliding windows.
+e.g.: {1, -2, 3, 7, 11, 17, 4, 5, -6}, k = 3. There are 3 windows, so should print:
+O/P: -2, 0, -6
+
+Ans: For space optimized solution, use below gfg's link's last solution. Otherwise Aditya Verma's youtube playlist:
+
+https://www.geeksforgeeks.org/first-negative-integer-every-window-size-k/
+
+https://www.youtube.com/watch?v=uUXXEgK2Jh8&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=6
+
