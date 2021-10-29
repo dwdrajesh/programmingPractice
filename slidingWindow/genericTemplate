@@ -43,15 +43,15 @@ vector<int> slidingWindow (vector<int> array, int k)
   while (j < size())
   {
     // First do some calculation
-
-
-    if (j - i + 1 < k)
-    {
-      while (dq.size() > 0 && array[j] > dq.back())
+    while (dq.size() > 0 && array[j] > dq.back())
       {
         dq.pop_back();
       }
       dq.push_back(array[j]);
+
+    if (j - i + 1 < k)
+    {
+      j++;
     }
     
     // a. If we have got the input elements filling up the sliding window's size upto now, 
@@ -59,13 +59,11 @@ vector<int> slidingWindow (vector<int> array, int k)
         // while loop into the FINAL ANSWER or just keep sliding the window
     // b. After a., just slide the window BUT before sliding, check if we can just discard the
         // elements in this window at the ith index or need to save somewhere
-
-    if (j - i + 1 == k)
+    
+    else if (j - i + 1 == k)
     {
       // a.
       answer.push_back(dq.front());
-      
-      dq.push_back(array[j]);
       
       if (arr[i] == dq.front())
       {
