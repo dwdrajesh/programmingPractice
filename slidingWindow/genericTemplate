@@ -1,0 +1,107 @@
+1. For fixed size sliding window problems, follow the generic template below:
+
+while loop()
+{
+  A. Calculation
+  B. Ans <-- Calculation
+  C. Slide the window
+}
+Q. Return maximum value in each sliding window of size 'k'.
+
+slidingWindow (vector<int> array, int k)
+{
+// k  is window size, fixed,
+// array is input vector or string
+int size = array.size();
+int i =0, j=0;
+
+// continue until the 2nd pointer reaches the end of array input
+while (j < size())
+{
+  // First do some calculation
+  
+  // if the 2nd pointer hasn't reached the window size, keep increasing the 2nd pointer
+  if (j - i + 1 < k)
+    j++;
+    
+  // a. If we have got the input elements filling up the sliding window's size upto now, 
+      // CHECK IF we need to save/add the calculations we have done at the beginning of this
+      // while loop into the FINAL ANSWER or just keep sliding the window
+  // b. After a., just slide the window BUT before sliding, check if we can just discard the
+      // elements in this window at the ith index or need to save somewhere
+  
+}
+
+
+vector<int> slidingWindow (vector<int> array, int k)
+{
+  int size = array.size();
+  int i =0, j=0;
+  vector<int> answer; // this is the final answer of all maximum values in each sliding window
+  deque<int> dq; // list to keep the maximum in each running window
+
+  while (j < size())
+  {
+    // First do some calculation
+
+
+    if (j - i + 1 < k)
+    {
+      while (dq.size() > 0 && array[j] > dq.back())
+      {
+        dq.pop_back();
+      }
+      dq.push_back(array[j]);
+    }
+    
+    // a. If we have got the input elements filling up the sliding window's size upto now, 
+        // CHECK IF we need to save/add the calculations we have done at the beginning of this
+        // while loop into the FINAL ANSWER or just keep sliding the window
+    // b. After a., just slide the window BUT before sliding, check if we can just discard the
+        // elements in this window at the ith index or need to save somewhere
+
+    if (j - i + 1 == k)
+    {
+      // a.
+      answer.push_back(dq.front());
+      
+      dq.push_back(array[j]);
+      
+      if (arr[i] == dq.front())
+      {
+        
+        dq.pop_front();
+      }
+      i++;
+      j++;
+    }
+
+  return answer;
+}
+
+
+
+Nice explanation 
+but TC can be improved to nlog(k) from n*k:
+int n=A.size();
+    priority_queue<int> pq;
+    unordered_map<int,int> mp;
+    vector<int> ans;
+    int i=0,j=0;
+    while(j<n)
+    {
+        pq.push(A[j]);
+        if((j-i+1)<B){  mp[A[j]]++;j++;}
+        else if((j-i+1)==B)
+        {
+            mp[A[j]]++;
+            mp[A[i]]--;
+            i++;
+            vec.push_back(pq.top());
+            while(!pq.empty() && mp[pq.top()]==0) pq.pop(); // remove the elements which are not present in the window
+            j++;
+        }
+    }
+    return ans;
+    
+    
